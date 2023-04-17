@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import { Container } from 'react-bootstrap';
+import './Login.css';
 
 const Login = () => {
   const [user, setUser] = useState('');
@@ -23,27 +24,34 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Usuário:
-        <input
-          type="text"
-          value={user}
-          onChange={(e) => setUser(e.target.value)}
-        />
-      </label>
-      <br />
-      <label>
-        Senha:
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </label>
-      <br />
-      <button type="submit">Entrar</button>
-    </form>
+    <Container className="login-container">
+      <form onSubmit={handleSubmit} className="login-form">
+        <h1 className="login-title">Login</h1>
+        <div className="form-group">
+          <input
+            type="text"
+            className="form-control login-input"
+            id="user"
+            placeholder="User"
+            value={user}
+            onChange={(e) => setUser(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="password"
+            className="form-control login-input"
+            id="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <button type="submit" className="btn btn-primary login-button">
+          Entrar
+        </button>
+      </form>
+    </Container>
   );
 };
 
